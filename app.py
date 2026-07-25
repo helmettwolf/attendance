@@ -17,3 +17,10 @@ if tt:
     response=client.models.generate_content(model="gemini-flash-lite-latest", contents=[img, prompt])
     data=json.loads(response.text)
     st.write(data)
+    count={}
+    for sub in data:
+        if sub["subject"] in count:
+            count[sub["subject"]]+=1
+        else:
+            count[sub["subject"]]=1
+    st.write(count)
